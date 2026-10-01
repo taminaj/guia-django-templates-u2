@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %} App 3 {% endblock %}
+{% block page_heading %}Bienvenido a App 3{% endblock %}
+{% block page_subheading %}Vista general con tarjetas informativas{% endblock %}
+
+{% block content %}
+<div class="row g-4">
+    <!-- Tarjeta 1 -->
+    <div class="col-12 col-md-4">
+        <div class="card h-100 shadow-sm border-0">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Módulo A</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Estadísticas</h6>
+                <p class="card-text">Resumen de datos procesados recientemente por la aplicación.</p>
+                <a href="#" class="btn btn-outline-primary btn-sm">Ver detalles</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tarjeta 2 -->
+    <div class="col-12 col-md-4">
+        <div class="card h-100 shadow-sm border-0">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Módulo B</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Configuración</h6>
+                <p class="card-text">Ajusta los parámetros operativos y preferencias de usuario.</p>
+                <a href="#" class="btn btn-outline-success btn-sm">Configurar</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tarjeta 3 -->
+    <div class="col-12 col-md-4">
+        <div class="card h-100 shadow-sm border-0">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Módulo C</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Reportes</h6>
+                <p class="card-text">Exporta reportes y métricas generadas durante la sesión actual.</p>
+                <a href="#" class="btn btn-outline-secondary btn-sm">Descargar</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
