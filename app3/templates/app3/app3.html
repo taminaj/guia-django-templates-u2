@@ -1,45 +1,35 @@
 {% extends 'base.html' %}
+{% load static %}
 
-{% block title %} App 3 {% endblock %}
-{% block page_heading %}Bienvenido a App 3{% endblock %}
-{% block page_subheading %}Vista general con tarjetas informativas{% endblock %}
+{% block title %}App 3{% endblock %}
+{% block page_heading %}{{ titulo }}{% endblock %}
+{% block page_subheading %}Listado de productos disponibles{% endblock %}
 
 {% block content %}
 <div class="row g-4">
-    <!-- Tarjeta 1 -->
+    {% for item in lista_elementos %}
     <div class="col-12 col-md-4">
         <div class="card h-100 shadow-sm border-0">
-            <div class="card-body">
-                <h5 class="card-title fw-bold">Módulo A</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Estadísticas</h6>
-                <p class="card-text">Resumen de datos procesados recientemente por la aplicación.</p>
-                <a href="#" class="btn btn-outline-primary btn-sm">Ver detalles</a>
-            </div>
-        </div>
-    </div>
+            {% if item.imagen %}
+                <img src="{% get_static_prefix %}{{ item.imagen }}" 
+                    class="card-img-top" 
+                    alt="{{ item.nombre }}"
+                    style="height: 200px; object-fit: contain; padding: 10px;">
+            {% endif %}
 
-    <!-- Tarjeta 2 -->
-    <div class="col-12 col-md-4">
-        <div class="card h-100 shadow-sm border-0">
-            <div class="card-body">
-                <h5 class="card-title fw-bold">Módulo B</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Configuración</h6>
-                <p class="card-text">Ajusta los parámetros operativos y preferencias de usuario.</p>
-                <a href="#" class="btn btn-outline-success btn-sm">Configurar</a>
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title fw-bold">{{ item.nombre }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">${{ item.precio }}</h6>
+                <a href="#" class="btn {{ item.clase_boton }} btn-sm mt-auto">{{ item.texto_boton }}</a>
             </div>
         </div>
     </div>
-
-    <!-- Tarjeta 3 -->
-    <div class="col-12 col-md-4">
-        <div class="card h-100 shadow-sm border-0">
-            <div class="card-body">
-                <h5 class="card-title fw-bold">Módulo C</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Reportes</h6>
-                <p class="card-text">Exporta reportes y métricas generadas durante la sesión actual.</p>
-                <a href="#" class="btn btn-outline-secondary btn-sm">Descargar</a>
-            </div>
+    {% empty %}
+    <div class="col-12">
+        <div class="alert alert-info" role="alert">
+            No hay tarjetas disponibles en este momento.
         </div>
     </div>
+    {% endfor %}
 </div>
 {% endblock %}
